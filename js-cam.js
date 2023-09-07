@@ -188,19 +188,12 @@ async function getCamera() {
     }
 }
 
-// Use Case :
-// window.onload = async function (e) {
-//     const cameraStream = await getCamera()
-//     const camera = new Camera(cameraStream, "canvas#cam-rendering")
-
-//     camera.addEventListener("update", function (e) {
-//         /**
-//          * @type {CameraUpdateEvent}
-//          */
-//         const detail = e.detail
-
-//         console.log(detail.renderCanvasCtx)
-//     })
-
-//     camera.start()
-// }
+/**
+ * 
+ * @param {string} canvasSelector 
+ */
+async function newCamera(canvasSelector) {
+    const cameraStream = await getCamera()
+    const camera = new Camera(cameraStream, canvasSelector)
+    return camera
+}
