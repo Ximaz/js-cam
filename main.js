@@ -39,7 +39,7 @@ class Camera extends EventTarget {
         cameraStream,
         renderCanvasSelector,
         frameRate = -1,
-        updateFrameRate = 1000 / 1
+        updateFrameRate = 1000 / 1 // Equivalent to 1 second
     ) {
         super()
 
