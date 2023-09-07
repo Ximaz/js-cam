@@ -33,7 +33,7 @@ class Camera extends EventTarget {
      * @param {MediaStream} cameraStream The mediaStream access
      * @param {String} renderCanvasSelector The canvas to render the webcam
      * @param {Number} frameRate The canvas rendering frame rate. -1 = no limit
-     * @param {Number} updateFrameRate `onupdate` is called to each frame according to `frameRate`, but the `newFrame` param is set to `true` when the updateFrameRate is reached.
+     * @param {Number} updateFrameRate Frame rate towhich set `newFrame` to `true`
      */
     constructor(
         cameraStream,
