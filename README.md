@@ -44,6 +44,34 @@ The `js-cam.js` file contains all the code needed to help you implement a camera
 
 -   go to your web page and click "Accept" to the web browser camera device prompt.
 
+# Customization
+To customize your camera access, instead of calling the `newCamera` function, you can do something similar :
+```html
+<script>
+    // Makes sure the canvas has been added to the DOM before trying to
+    // access it.
+    window.onload = async function (winEvent) {
+        const cameraStream = await getCamera()
+        const camera = new Camera(cameraStream, "canvas#cam-rendering", 60, 1000 / 1)
+
+        camera.addEventListener("update", function (camEvent) {
+            /**
+             * @type {CameraUpdateEvent}
+             */
+            const detail = camEvent.detail
+
+            console.log(detail.renderCanvasCtx)
+        })
+
+        camera.start()
+    }
+</script>
+```
+
+In this example, we're streaming the camera at 60 FPS and we're defining a new frame each 1 second when the `onupdate` event is listen. It just means that if you want,
+each second, to draw a red box over your webcam, you have a variable called `newFrame` inside `camEvent.detail` which is set to true. Once this frame is gone, it goes
+back to `false` until the next `newFrame`.
+
 # Warnings
 As you might not be aware, I prefer to warn you that [Camera device can only be used in a secured context](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia). You need to either :
 -   run your server locally with `localhost`,
