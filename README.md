@@ -69,7 +69,7 @@ To customize your camera access, instead of calling the `newCamera` function, yo
 ```
 
 In this example, we're streaming the camera at 60 FPS and we're defining a new frame each 1 second when the `onupdate` event is listen. It just means that if you want,
-each second, to draw a red box over your webcam, you have a variable called `newFrame` inside `camEvent.detail` which is set to true. Once this frame is gone, it goes
+each second, to draw a red box over your webcam, you have a variable called `newFrame` inside `camEvent.detail` which is set to `true`. Once this frame is gone, it goes
 back to `false` until the next `newFrame`.
 
 # Warnings
