@@ -150,7 +150,14 @@ class Camera extends EventTarget {
     }
 
     get frame() {
-        return this.renderCanvas.toDataURL("image/png")
+        return self.renderCanvas.toDataURL("image/jpeg", 1.0)
+    }
+
+    getBlob() {
+        const self = this
+        return new Promise(function (resolve, reject) {
+            self.renderCanvas.toBlob(resolve, "image/jpeg", 1.0)
+        })
     }
 
     start() {
@@ -181,7 +188,12 @@ async function getCamera() {
 
     try {
         return await mediaDevices.getUserMedia({
-            video: true,
+            audio: false,
+            video: {
+                facingMode: { exact: "environment" },
+                width: { ideal: 9999 },
+                height: { ideal: 9999 }
+            },
         })
     } catch (error) {
         throw error
