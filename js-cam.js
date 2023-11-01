@@ -163,12 +163,14 @@ class Camera extends EventTarget {
     start() {
         const self = this
         const i = setInterval(function () {
-            if (self.isReady) {
+            if (self.isReady && !self.isPlaying) {
                 self.isPlaying = true
                 self.camera.play()
+            } else if (self.isReady && self.isPlaying) {
+                self.isPlaying = false
                 clearInterval(i)
             }
-        }, 500)
+        }, 1)
     }
 
     resume() {
@@ -205,7 +207,7 @@ async function getCamera() {
  * @param {string} canvasSelector 
  */
 async function newCamera(canvasSelector) {
-    const cameraStream = await getCamera()
+    const cameraStream = await getCamera()   
     const camera = new Camera(cameraStream, canvasSelector)
     return camera
 }
