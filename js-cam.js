@@ -207,7 +207,20 @@ async function getCamera() {
  * @param {string} canvasSelector 
  */
 async function newCamera(canvasSelector) {
-    const cameraStream = await getCamera()   
+    /**
+     * @type {MediaStream}
+     */
+    let cameraStream;
+
+    try {
+        cameraStream = await getCamera()   
+    } catch (error) {
+        if (error instanceof OverconstrainedError) {
+            alert("Unable to capture the rear camera")
+            return
+        }
+        alert(`An unexpected error ocurred : ${error}`)
+    }
     const camera = new Camera(cameraStream, canvasSelector)
     return camera
 }
