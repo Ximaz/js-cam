@@ -150,7 +150,7 @@ class Camera extends EventTarget {
     }
 
     get frame() {
-        return self.renderCanvas.toDataURL("image/jpeg", 1.0)
+        return this.renderCanvas.toDataURL("image/jpeg", 1.0)
     }
 
     getBlob() {
