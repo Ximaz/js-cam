@@ -1,11 +1,11 @@
 /**
  * @typedef CameraUpdateEvent
- * @type {object}
+ * @type {Object}
  * @property {HTMLCanvasElement} renderCanvas
  * @property {CanvasRenderingContext2D} renderCanvasCtx
- * @property {boolean} isReady        Is the camera' stream ready to be played
- * @property {boolean} isPlaying      Is the camera' stream currently being played
- * @property {boolean} newUpdateFrame May the current frame be refreshed based on updateFrameRate
+ * @property {Boolean} isReady        Is the camera' stream ready to be played
+ * @property {Boolean} isPlaying      Is the camera' stream currently being played
+ * @property {Boolean} newUpdateFrame May the current frame be refreshed based on updateFrameRate
  */
 
 class _FrameHandler {
@@ -56,12 +56,12 @@ class Camera extends EventTarget {
         this.camera.muted = true
 
         /**
-         * @type {boolean}
+         * @type {Boolean}
          */
         this.isPlaying = false
 
         /**
-         * @type {boolean}
+         * @type {Boolean}
          */
         this.isReady = false
 
@@ -76,22 +76,22 @@ class Camera extends EventTarget {
         this.renderCanvasCtx = this.renderCanvas.getContext("2d")
 
         /**
-         * @type {number}
+         * @type {Number}
          */
         this.requestAnimationFrame = -1
 
         /**
-         * @type {boolean}
+         * @type {Boolean}
          */
         this.newUpdateFrame = false
 
         /**
-         * @type {boolean}
+         * @type {Boolean}
          */
         this.horizontal = false
 
         /**
-         * @type {boolean}
+         * @type {Boolean}
          */
         this.vertical = false
 
